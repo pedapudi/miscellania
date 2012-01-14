@@ -1,5 +1,3 @@
 <Response>
-    <Say>Greetings, your call will be forwarded.</Say>
-    <Dial>747-999-5432</Dial>
-    <Say>Remote party hung up or call failed. Goodbye</Say>
+  <Dial>747-999-5432</Dial>
 </Response>
