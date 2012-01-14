@@ -1,5 +1,5 @@
 <Response>
     <Say>Greetings, your call will be forwarded.</Say>
-    <Dial>+16262158716</Dial>
+    <Dial>626-215-8716</Dial>
     <Say>Remote party hung up or call failed. Goodbye</Say>
 </Response>
