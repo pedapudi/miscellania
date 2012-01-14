@@ -1,0 +1,5 @@
+<Response>
+    <Say>Greetings, your call will be forwarded.</Say>
+    <Dial>+17479995432</Dial>
+    <Say>Remote party hung up or call failed. Goodbye</Say>
+</Response>
