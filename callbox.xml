@@ -1,4 +1,5 @@
 <Response>
+  <Say> Greetings, your call will be forwarded </Say>
   <Dial>747-999-5432</Dial>
   <Say> Goodbye </Say>
 </Response>
