@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import argparse
+import urllib2
+
+# Parser for command-line arguments. 
+kParser = argparse.ArgumentParser(description = "Simple METAR retrieval tool.")
+kParser.add_argument("stations", metavar = "S", 
+                     type = str, nargs = '+', 
+                     help = "List of stations for which to retrieve METARs")
+kParser.add_argument("-d", "--decoded", 
+                     action = "store_true", help = "Decode METARs")
+kParser.add_argument("-t", "--taf", 
+                     action = "store_true", help = "Fetch Terminal Area Forecast for given stations")
+
+kMETARBaseURL = "http://weather.noaa.gov/pub/data/observations/metar/"
+kMETARRaw = "stations/"
+kMETARDecoded = "decoded/"
+kTAFBaseURL = "http://weather.noaa.gov/pub/data/forecasts/taf/stations/"
+
+def PrintURL(url):
+    try:
+        opened_url = urllib2.urlopen(url)
+    except urllib2.URLError:
+        print "URL not found: " + url
+    else:
+        print opened_url .read()
+
+def ParseAndPrintMETAR():
+    parsed_args = vars(kParser.parse_args())
+    
+    if parsed_args["taf"]:
+        url = kTAFBaseURL
+    else:
+        url = kMETARBaseURL 
+        url += kMETARDecoded if parsed_args["decoded"] else kMETARRaw
+
+    for station in parsed_args["stations"]:
+        PrintURL(url + station.upper() + ".TXT")
+
+if __name__ == "__main__":
+    ParseAndPrintMETAR()
